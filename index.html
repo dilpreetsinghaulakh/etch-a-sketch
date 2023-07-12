@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Etch a Sketch</title>
     <script src="script.js" defer></script>
-    <link href="style.css" rel="stylesheet">
-</head>
-<body>
-    <button onclick="clearGrid()">Clear</button>
-    <div id="container"></div>
-</body>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <h1>Etch a Sketch</h1>
+    <div class="main">
+      <div class="controls">
+        <span>
+          <label for="input[type='color']">Foreground color&nbsp;</label>
+          <input id="fgColorInput" type="color" value="#000000" />
+        </span>
+        <span>
+          <label for="input[type='color']">Background color</label>
+          <input id="bgColorInput" type="color" value="#ffffff" />
+        </span>
+        <button onclick="clearGrid()">Clear</button>
+      </div>
+      <div id="container"></div>
+    </div>
+  </body>
 </html>

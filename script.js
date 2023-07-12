@@ -1,4 +1,6 @@
 const container = document.getElementById("container");
+const fgColorInput = document.getElementById("fgColorInput");
+const bgColorInput = document.getElementById("bgColorInput");
 
 const defaultGridSize = 32;
 
@@ -31,18 +33,26 @@ function createGrid(gridSize) {
     container.addEventListener("mouseleave", function () {
       gridBox.style.outlineColor = "#00000000";
     });
-    
+
     // <--END
   }
 }
 
+var color = "#000";
+fgColorInput.addEventListener("input", function (event) {
+  color = event.target.value;
+});
+
+const fgColor = () => {
+  return color;
+};
+
 function changeColor(e) {
   if (e.type === "mouseover" && !mouseDown) return;
-  e.target.style.backgroundColor = "#000";
+  e.target.style.backgroundColor = fgColor();
 }
 
 const clearGrid = () => {
   container.innerHTML = "";
   createGrid(gridSize);
-  // console.log('Clicked')
 };
