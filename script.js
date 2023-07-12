@@ -1,29 +1,48 @@
 const container = document.getElementById("container");
 
-const defaultGridSize = 16;
+const defaultGridSize = 32;
 
 var gridSize = defaultGridSize;
+
+let mouseDown = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
 
 container.style.cssText = `
 grid-template-columns: repeat(${gridSize}, 1fr);
 grid-template-rows: repeat(${gridSize}, 1fr);`;
 
-for (let i = 0; i < defaultGridSize ** 2; i++) {
-  const div = document.createElement("div");
-  div.className = "containerItem";
-  div.style.height = `calc(75vh/${gridSize})`;
-  container.appendChild(div);
+createGrid(gridSize);
+
+function createGrid(gridSize) {
+  for (let i = 0; i < gridSize ** 2; i++) {
+    const gridBox = document.createElement("div");
+    gridBox.className = "containerItem";
+    gridBox.style.height = `calc(75vh/${gridSize})`;
+    gridBox.addEventListener("mousedown", changeColor);
+    gridBox.addEventListener("mouseover", changeColor);
+    container.appendChild(gridBox);
+
+    // Need to find a better way of doing this. (on hover outline) START-->
+
+    container.addEventListener("mouseenter", function () {
+      gridBox.style.outlineColor = "#808080";
+    });
+    container.addEventListener("mouseleave", function () {
+      gridBox.style.outlineColor = "#00000000";
+    });
+    
+    // <--END
+  }
 }
-const boxes = document.querySelectorAll('.containerItem');
-container.addEventListener('mouseenter', function() {
-  boxes.forEach(function(box) {
-    box.style.outline = '0.5px solid #808080';
-  });
-})
 
-container.addEventListener('mouseleave', function() {
-  boxes.forEach(function(box) {
-    box.style.outline = '0.5px solid #80808000'
-  })
-})
+function changeColor(e) {
+  if (e.type === "mouseover" && !mouseDown) return;
+  e.target.style.backgroundColor = "#000";
+}
 
+const clearGrid = () => {
+  container.innerHTML = "";
+  createGrid(gridSize);
+  // console.log('Clicked')
+};
