@@ -23,6 +23,16 @@ h1 {
 
 button {
   cursor: pointer;
+  font-size: 1rem;
+  background-color: white;
+  border: 2px black solid;
+  border-radius: 10px;
+  padding-block: 0.5em;
+  transition: ease-in-out 200ms;
+}
+
+button:hover {
+  transform: scale(1.01);
 }
 
 .main {
@@ -45,18 +55,31 @@ button {
   gap: 1.5em;
 }
 
-/* input[type="range"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 200px;
-  background-color: transparent;
- */
-
-.sliderContainer{
-  display: block;
+.sliderContainer {
+  display: flex;
+  gap: .5em;
+  align-items: center;
 }
 
+input[type='range']{
+  -webkit-appearance: none;
+  width: 50%;
+  height: .5em;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  padding: 2px;
+  cursor: pointer;
+  background: linear-gradient(90deg, rgba(4,222,255,1) 0%, rgba(7,255,0,1) 57%, rgba(255,194,0,1) 92%);
+  border-radius: 100px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1em;
+  width: 1em;
+  border-radius: 10px;
+  background-color: #212121;
+}
 
 #container {
   display: grid;
@@ -95,6 +118,50 @@ input[type="color"]::-webkit-color-swatch {
   border-radius: 500px;
 }
 
+.fgSpan{
+  padding-inline: 1em;
+}
+
+span{
+  display: flex;
+  justify-content: space-between;
+}
+
 .randomColorActive {
-  background-color: hsl(180, 100%, 50%);
+  background: linear-gradient(red, transparent),
+    linear-gradient(to top left, lime, transparent),
+    linear-gradient(to top right, blue, transparent);
+  background-size: 100% 150%;
+  background-blend-mode: screen;
+}
+
+.eraserActive {
+  background-color: #212121;
+  color: #e4e4e4;
+}
+
+.dangerZone {
+  border: #ff9a9a 3px solid;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: inherit;
+  padding: 1em;
+}
+
+.dangerZone::before {
+  margin-top: -1.75em;
+  content: "Canvas will be Cleared";
+  position: absolute;
+  background-color: #e4e4e4;
+  outline: 2px #e4e4e4 solid;
+  color: #ff2929;
+}
+
+.clear:hover{
+  background-color: #ff9a9a;
+}
+
+button:active{
+  transform: scale(.975);
 }

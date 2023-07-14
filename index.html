@@ -11,20 +11,32 @@
     <h1>Etch a Sketch</h1>
     <div class="main">
       <div class="controls">
-        <span>
+        <span class="fgSpan">
           <label for="input[type='color']">Foreground color&nbsp;</label>
           <input id="fgColorInput" type="color" value="#000000" />
         </span>
-        <span>
-          <label for="input[type='color']">Background color</label>
-          <input id="bgColorInput" type="color" value="#ffffff" />
-        </span>
         <button id="randomColorToggle">Randomize Colors</button>
-        <div class="sliderContainer">
-          <input id="gridSlider" class="slider" type="range" min="1" max="50" value="24" step="1" />
-          <label id="sliderLabel" for="gridSlider" ></label>
+        <button id="eraserToggle">Eraser</button>
+        <div class="dangerZone">
+          <span>
+            <label for="input[type='color']">Background color</label>
+            <input id="bgColorInput" type="color" value="#ffffff" />
+          </span>
+          <div class="sliderContainer">
+            <label for="gridSlider">Grid Size</label>
+            <input
+              id="gridSlider"
+              class="slider"
+              type="range"
+              min="1"
+              max="50"
+              value="24"
+              step="1"
+            />
+            <label id="sliderLabel" for="gridSlider"></label>
+          </div>
+          <button class="clear" onclick="clearGrid()">Clear</button>
         </div>
-        <button onclick="clearGrid()">Clear</button>
       </div>
       <div id="container"></div>
     </div>
