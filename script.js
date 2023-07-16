@@ -17,8 +17,8 @@ gridSlider.addEventListener("change", function () {
 });
 
 let mouseDown = false;
-document.body.onmousedown = () => (mouseDown = true);
-document.body.onmouseup = () => (mouseDown = false);
+document.body.onmousedown = () => {mouseDown = true};
+document.body.onmouseup = () => {mouseDown = false};
 
 var bgColor = "#ffffff";
 console.log(bgColor);
